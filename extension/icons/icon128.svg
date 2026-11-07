@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="20" fill="#0f172a" stroke="#2563eb" stroke-width="4"/>
+  <g transform="translate(64,56)" fill="none" stroke="#38bdf8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0,-32 L24,-20 L24,4 C24,24 0,36 0,36 C0,36 -24,24 -24,4 L-24,-20 Z"/>
+    <polyline points="-8,2 -2,10 10,-6" stroke-width="5" stroke="#22c55e"/>
+  </g>
+  <text x="64" y="106" text-anchor="middle" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="1">TRUSTX</text>
+</svg>
