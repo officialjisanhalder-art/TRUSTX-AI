@@ -230,13 +230,6 @@ npm run dev
 
 TRUSTX AI is pre-configured with a complete Render Blueprint specification (`render.yaml`).
 
-### Deployment Steps:
-1. In your [Render Dashboard](https://dashboard.render.com/), click **New +** → **Blueprint**.
-2. Connect this repository (`officialjisanhalder-art/TRUSTX-AI`).
-3. Render automatically builds both services:
-   - **`trustx-api`** (FastAPI Web Service running Python 3.11.9)
-   - **`trustx-frontend`** (React Vite Static Site)
-3. Set `VITE_API_URL` on the frontend static site to your live backend service URL.
 
 ---
 
