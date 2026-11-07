@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.clickInterceptionToggle.checked = response.settings.clickInterception !== false;
       }
       elements.notificationsToggle.checked = response.settings.showNotifications !== false;
-      elements.apiUrlInput.value = response.settings.apiUrl || 'http://localhost:8000';
+      elements.apiUrlInput.value = response.settings.apiUrl || 'https://trustx-api.onrender.com';
     }
   });
 
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (elements.deepInvestigateBtn) {
     elements.deepInvestigateBtn.addEventListener('click', () => {
       if (currentTabUrl) {
-        chrome.tabs.create({ url: `http://localhost:5173/scanner?target=${encodeURIComponent(currentTabUrl)}` });
+        chrome.tabs.create({ url: `https://trustx-frontend-uiij.onrender.com/scanner?target=${encodeURIComponent(currentTabUrl)}` });
       }
     });
   }
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===================== API Health Check =====================
   async function checkApiHealth() {
     try {
-      const apiUrl = elements.apiUrlInput.value || 'http://localhost:8000';
+      const apiUrl = elements.apiUrlInput.value || 'https://trustx-api.onrender.com';
       const response = await fetch(`${apiUrl}/health`, { 
         method: 'GET',
         signal: AbortSignal.timeout(3000),

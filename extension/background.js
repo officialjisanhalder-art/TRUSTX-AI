@@ -3,7 +3,8 @@
  * Handles URL scanning, notifications, and extension lifecycle.
  */
 
-const API_BASE = 'http://localhost:8000';
+const API_BASE = 'https://trustx-api.onrender.com';
+const WEB_BASE = 'https://trustx-frontend-uiij.onrender.com';
 
 // ===================== State Management =====================
 let scanHistory = [];

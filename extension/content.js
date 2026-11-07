@@ -645,7 +645,7 @@ function showClickInterceptModal(url, domain, res) {
 
   document.getElementById('tx-modal-deep-btn')?.addEventListener('click', () => {
     backdrop.remove();
-    window.open(`http://localhost:5173/scanner?target=${encodeURIComponent(url)}`, '_blank');
+    window.open(`https://trustx-frontend-uiij.onrender.com/scanner?target=${encodeURIComponent(url)}`, '_blank');
   });
 
   document.getElementById('tx-modal-bypass-btn')?.addEventListener('click', () => {
