@@ -2,7 +2,10 @@
  * API service for communicating with TRUSTX AI backend.
  */
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_URL || 
+  (typeof window !== 'undefined' && window.location.hostname === 'localhost' 
+    ? 'http://localhost:8000' 
+    : 'https://trustx-api.onrender.com');
 
 /**
  * Scan a URL for phishing detection.

@@ -76,6 +76,17 @@ def investigate_url(url: str, client_ip: str = "127.0.0.1") -> Dict[str, Any]:
     is_whitelisted = False
     is_blacklisted = False
 
+    OFFICIAL_TRUSTED_DOMAINS = {
+        'trustx.ai', 'onrender.com', 'render.com',
+        'trustx-frontend-uiij.onrender.com', 'trustx-api.onrender.com',
+        'localhost', '127.0.0.1', 'github.com', 'google.com',
+        'microsoft.com', 'apple.com'
+    }
+    for td in OFFICIAL_TRUSTED_DOMAINS:
+        if clean_domain == td or clean_domain.endswith('.' + td):
+            is_whitelisted = True
+            break
+
     if os.path.exists(db_path):
         try:
             conn = sqlite3.connect(db_path)

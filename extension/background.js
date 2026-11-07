@@ -6,6 +6,28 @@
 const API_BASE = 'https://trustx-api.onrender.com';
 const WEB_BASE = 'https://trustx-frontend-uiij.onrender.com';
 
+const OFFICIAL_TRUSTED_DOMAINS = [
+  'trustx-frontend-uiij.onrender.com',
+  'trustx-api.onrender.com',
+  'onrender.com',
+  'render.com',
+  'trustx.ai',
+  'localhost',
+  '127.0.0.1'
+];
+
+function isOfficialDomain(targetUrl) {
+  if (!targetUrl) return false;
+  try {
+    const raw = targetUrl.startsWith('http') ? targetUrl : `https://${targetUrl}`;
+    const parsed = new URL(raw);
+    const host = parsed.hostname.toLowerCase();
+    return OFFICIAL_TRUSTED_DOMAINS.some(d => host === d || host.endsWith('.' + d));
+  } catch (e) {
+    return false;
+  }
+}
+
 // ===================== State Management =====================
 let scanHistory = [];
 let settings = {
@@ -19,9 +41,15 @@ let settings = {
 // In-memory fast cache for link inspection (max 500 URLs, 10 min TTL)
 const linkCache = new Map();
 
-// Load settings from storage on startup
+// Load settings from storage on startup and auto-migrate legacy localhost URLs
 chrome.storage.local.get(['settings', 'scanHistory'], (result) => {
-  if (result.settings) settings = { ...settings, ...result.settings };
+  if (result.settings) {
+    settings = { ...settings, ...result.settings };
+    if (!settings.apiUrl || settings.apiUrl.includes('localhost')) {
+      settings.apiUrl = API_BASE;
+      chrome.storage.local.set({ settings });
+    }
+  }
   if (result.scanHistory) scanHistory = result.scanHistory;
 });
 
@@ -35,6 +63,27 @@ chrome.storage.local.get(['settings', 'scanHistory'], (result) => {
  */
 async function scanUrl(url, options = {}) {
   const { isHover = false, forceRefresh = false } = options;
+
+  // Pre-filter: official TRUSTX AI and trusted platform domains are guaranteed 100% safe
+  if (isOfficialDomain(url)) {
+    return {
+      url,
+      prediction: 'safe',
+      is_phishing: false,
+      confidence: 100,
+      phishing_probability: 0,
+      safe_probability: 100,
+      risk_level: 'safe',
+      shap_explanation: {
+        method: 'official_whitelist',
+        top_features: [
+          { feature: 'official_domain', description: 'Verified TRUSTX AI Platform Domain', impact: 'decreases_phishing' }
+        ],
+        all_features: []
+      },
+      source: 'whitelist'
+    };
+  }
 
   // Check in-memory fast cache
   if (!forceRefresh && linkCache.has(url)) {
@@ -125,8 +174,8 @@ function showNotification(result) {
 // Auto-scan on tab update (when URL changes)
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (settings.autoScan && changeInfo.status === 'complete' && tab.url) {
-    // Skip internal Chrome pages
-    if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) {
+    // Skip internal Chrome pages and official TRUSTX domains
+    if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://') || isOfficialDomain(tab.url)) {
       return;
     }
     

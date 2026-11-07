@@ -52,6 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentTabUrl = '';
 
+  const OFFICIAL_TRUSTED_DOMAINS = [
+    'trustx-frontend-uiij.onrender.com',
+    'trustx-api.onrender.com',
+    'onrender.com',
+    'render.com',
+    'trustx.ai',
+    'localhost',
+    '127.0.0.1'
+  ];
+
+  function isOfficialDomain(targetUrl) {
+    if (!targetUrl) return false;
+    try {
+      const raw = targetUrl.startsWith('http') ? targetUrl : `https://${targetUrl}`;
+      const parsed = new URL(raw);
+      const host = parsed.hostname.toLowerCase();
+      return OFFICIAL_TRUSTED_DOMAINS.some(d => host === d || host.endsWith('.' + d));
+    } catch (e) {
+      return false;
+    }
+  }
+
   // ===================== Tab Navigation =====================
   const tabButtons = document.querySelectorAll('.nav-tab');
   const tabContents = {
@@ -101,6 +123,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   async function scanUrl(url) {
+    if (isOfficialDomain(url)) {
+      showResults({
+        url,
+        prediction: 'safe',
+        is_phishing: false,
+        confidence: 100,
+        phishing_probability: 0,
+        safe_probability: 100,
+        risk_level: 'safe',
+        shap_explanation: {
+          top_features: [
+            { description: 'Verified Official TRUSTX AI Platform Domain', impact: 'decreases_phishing' }
+          ]
+        }
+      });
+      return;
+    }
+
     showLoading();
     
     chrome.runtime.sendMessage(
@@ -227,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===================== Settings =====================
-  // Load settings
+  // Load settings and auto-migrate legacy localhost URLs
   chrome.runtime.sendMessage({ type: 'GET_SETTINGS' }, (response) => {
     if (response?.settings) {
       elements.autoScanToggle.checked = response.settings.autoScan !== false;
@@ -238,7 +278,17 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.clickInterceptionToggle.checked = response.settings.clickInterception !== false;
       }
       elements.notificationsToggle.checked = response.settings.showNotifications !== false;
-      elements.apiUrlInput.value = response.settings.apiUrl || 'https://trustx-api.onrender.com';
+
+      let apiUrl = response.settings.apiUrl || 'https://trustx-api.onrender.com';
+      if (apiUrl.includes('localhost')) {
+        apiUrl = 'https://trustx-api.onrender.com';
+        // Persist migration to background
+        chrome.runtime.sendMessage({
+          type: 'UPDATE_SETTINGS',
+          settings: { ...response.settings, apiUrl }
+        });
+      }
+      elements.apiUrlInput.value = apiUrl;
     }
   });
 

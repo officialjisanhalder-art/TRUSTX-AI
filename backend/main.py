@@ -134,6 +134,9 @@ def init_db():
         'apple.com', 'github.com', 'stackoverflow.com', 'wikipedia.org',
         'linkedin.com', 'twitter.com', 'youtube.com', 'reddit.com',
         'netflix.com', 'spotify.com', 'dropbox.com', 'zoom.us',
+        'trustx.ai', 'onrender.com', 'render.com',
+        'trustx-frontend-uiij.onrender.com', 'trustx-api.onrender.com',
+        'localhost', '127.0.0.1',
     ]
     
     for domain in trusted_domains:
@@ -376,14 +379,43 @@ async def predict_url(input_data: URLInput, request: Request):
     Returns prediction, confidence score, risk level, and SHAP explanation.
     """
     url = input_data.url
+    if not url.startswith(('http://', 'https://')):
+        url = 'https://' + url
+
     client_ip = request.client.host if request.client else "unknown"
     user_agent = request.headers.get("user-agent", "unknown")
     
     logger.info(f"Prediction request for URL: {url} from {client_ip}")
     
+    domain = _extract_domain(url)
+
+    # 1. Absolute Priority: Official TRUSTX Platform & Enterprise Infrastructure Whitelist
+    if is_official_trusted_domain(domain):
+        return PredictionResponse(
+            url=url,
+            prediction='safe',
+            is_phishing=False,
+            confidence=99.9,
+            phishing_probability=0.1,
+            safe_probability=99.9,
+            risk_level='safe',
+            shap_explanation={
+                'method': 'official_whitelist',
+                'top_features': [{
+                    'feature': 'official_trusted_domain',
+                    'description': 'Verified Official TRUSTX AI Platform & Certified Trusted Infrastructure',
+                    'shap_value': -1.0,
+                    'feature_value': 1,
+                    'impact': 'decreases_phishing',
+                    'abs_impact': 1.0,
+                }],
+                'all_features': [],
+            },
+            source='whitelist',
+        )
+
     # Check blacklist first
     conn = get_db()
-    domain = _extract_domain(url)
     
     blacklisted = conn.execute(
         'SELECT * FROM blacklist WHERE ? LIKE "%" || domain', (domain,)
@@ -934,16 +966,46 @@ async def vote_threat_report(vote: VoteInput, request: Request):
 
 
 # ===================== Helper Functions =====================
+OFFICIAL_TRUSTED_DOMAINS = {
+    'trustx.ai',
+    'onrender.com',
+    'render.com',
+    'trustx-frontend-uiij.onrender.com',
+    'trustx-api.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    'github.com',
+    'google.com',
+    'microsoft.com',
+    'apple.com',
+}
+
+
+def is_official_trusted_domain(domain: str) -> bool:
+    """Check if domain is an immutable official platform or enterprise trusted domain."""
+    if not domain:
+        return False
+    d = domain.lower().strip()
+    if ':' in d:
+        d = d.split(':')[0]
+    for trusted in OFFICIAL_TRUSTED_DOMAINS:
+        if d == trusted or d.endswith('.' + trusted):
+            return True
+    return False
+
+
 def _extract_domain(url: str) -> str:
     """Extract domain from URL."""
     import urllib.parse
     if not url.startswith(('http://', 'https://')):
-        url = 'http://' + url
+        url = 'https://' + url
     parsed = urllib.parse.urlparse(url)
-    domain = parsed.netloc
+    domain = parsed.netloc or parsed.path.split('/')[0]
     if domain.startswith('www.'):
         domain = domain[4:]
-    return domain
+    if ':' in domain:
+        domain = domain.split(':')[0]
+    return domain.lower().strip()
 
 
 # ===================== Run Server =====================

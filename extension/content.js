@@ -316,10 +316,35 @@ styleTag.textContent = `
 `;
 document.head.appendChild(styleTag);
 
+const OFFICIAL_TRUSTED_DOMAINS = [
+  'trustx-frontend-uiij.onrender.com',
+  'trustx-api.onrender.com',
+  'onrender.com',
+  'render.com',
+  'trustx.ai',
+  'localhost',
+  '127.0.0.1'
+];
+
+function isOfficialDomain(targetUrl) {
+  if (!targetUrl) return false;
+  try {
+    const raw = targetUrl.startsWith('http') ? targetUrl : `https://${targetUrl}`;
+    const parsed = new URL(raw);
+    const host = parsed.hostname.toLowerCase();
+    return OFFICIAL_TRUSTED_DOMAINS.some(d => host === d || host.endsWith('.' + d));
+  } catch (e) {
+    return false;
+  }
+}
+
 // Listen for scan results from background worker
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === 'SCAN_RESULT') {
     const result = message.data;
+    if (isOfficialDomain(window.location.href) || (result && isOfficialDomain(result.url))) {
+      return;
+    }
     if (result.risk_level === 'high' || result.risk_level === 'critical') {
       showWarningBanner(result);
     } else if (result.risk_level === 'medium') {
@@ -332,6 +357,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
  * Display card for high/critical risk URLs.
  */
 function showWarningBanner(result) {
+  if (isOfficialDomain(window.location.href) || isOfficialDomain(result?.url)) return;
   removeBanner();
 
   const card = document.createElement('div');
@@ -368,6 +394,7 @@ function showWarningBanner(result) {
  * Display card for medium-risk URLs.
  */
 function showCautionBanner(result) {
+  if (isOfficialDomain(window.location.href) || isOfficialDomain(result?.url)) return;
   removeBanner();
 
   const card = document.createElement('div');
@@ -487,6 +514,17 @@ document.addEventListener('mouseout', (e) => {
 function showLinkHoverBadge(url, domain) {
   removeLinkHoverBadge();
 
+  // Instant safe badge for verified official platform domains
+  if (isOfficialDomain(url) || isOfficialDomain(domain)) {
+    activeBadge = document.createElement('div');
+    activeBadge.id = 'trustx-link-hover-badge';
+    activeBadge.className = 'badge-safe';
+    activeBadge.innerHTML = `<span class="tx-badge-dot"></span> 🛡️ <strong>Official TRUSTX Domain</strong> · ${domain} (100%)`;
+    document.body.appendChild(activeBadge);
+    positionBadge(activeBadge, lastMouseX, lastMouseY);
+    return;
+  }
+
   activeBadge = document.createElement('div');
   activeBadge.id = 'trustx-link-hover-badge';
   activeBadge.className = 'badge-scanning';
@@ -546,6 +584,12 @@ document.addEventListener('click', (e) => {
   if (!linkInfo) return;
 
   const { url, domain, anchor } = linkInfo;
+
+  // Never intercept official TRUSTX AI and trusted platform links
+  if (isOfficialDomain(url) || isOfficialDomain(domain)) {
+    return;
+  }
+
   const cached = localLinkCache.get(url);
 
   if (cached) {
