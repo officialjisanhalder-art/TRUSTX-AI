@@ -1,51 +1,42 @@
 <p align="center">
-  <img src="docs/trustx_logo.png" width="360" alt="TRUSTX AI Logo">
+  <img src="docs/trustx_logo.png" width="160" alt="TRUSTX AI Logo">
 </p>
+
+# <p align="center">TRUSTX AI</p>
 
 <p align="center">
   <strong>Intelligent Web Security & Collaborative Threat Intelligence Platform</strong>
 </p>
 
 <p align="center">
-  <a href="#-architecture"><img src="https://img.shields.io/badge/Architecture-10--Module_Zero--Trust-0ea5e9?style=for-the-badge" alt="Architecture"></a>
-  <a href="#-model-evaluation--proof"><img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=for-the-badge" alt="Accuracy"></a>
-  <a href="#-chrome-browser-extension"><img src="https://img.shields.io/badge/Chrome_Extension-MV3_Zero--Click_Guard-2563eb?style=for-the-badge" alt="Chrome Extension"></a>
-  <a href="#-license"><img src="https://img.shields.io/badge/License-MIT-slate?style=for-the-badge" alt="License"></a>
-</p>
-
-<p align="center">
-  <a href="https://render.com/deploy?repo=https://github.com/officialjisanhalder-art/TRUSTX-AI">
-    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
-  </a>
-</p>
-
-<p align="center">
+  <a href="https://trustx-frontend-uiij.onrender.com/"><img src="https://img.shields.io/badge/Live_Demo-Online-00c853?style=flat-square&logo=render&logoColor=white" alt="Live Demo"></a>
   <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React">
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite">
-  <img src="https://img.shields.io/badge/Scikit--Learn-1.3-F7931E?style=flat-square&logo=scikit-learn&logoColor=white" alt="Scikit-Learn">
-  <img src="https://img.shields.io/badge/SHAP-Explainable_AI-764ABC?style=flat-square" alt="SHAP">
-  <img src="https://img.shields.io/badge/abuse.ch-URLhaus_Telemetry-dc2626?style=flat-square" alt="URLhaus">
-  <img src="https://img.shields.io/badge/ICANN-RDAP_Protocol-0284c7?style=flat-square" alt="RDAP">
+  <img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=flat-square" alt="Accuracy">
+  <img src="https://img.shields.io/badge/Chrome_MV3-Protected-2563eb?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome">
+  <img src="https://img.shields.io/badge/License-MIT-slate?style=flat-square" alt="License">
 </p>
 
 ---
 
+<span id="toc"></span>
 ## 📌 Table of Contents
-- [Executive Overview](#-executive-overview)
-- [Platform Architecture](#-architecture)
-- [10 Synchronized Security Modules](#-10-synchronized-security-modules)
-- [Unified Trust Score Engine (0–100)](#-unified-trust-score-engine-0100)
-- [Machine Learning Benchmark & Visual Proof](#-model-evaluation--proof)
-- [Chrome Browser Protection Extension](#-chrome-browser-extension)
-- [REST API Reference](#-rest-api-reference)
-- [Getting Started](#-getting-started)
-- [Security & Zero-Trust Principles](#-security--zero-trust-principles)
-- [License](#-license)
+- [Executive Overview](#overview)
+- [Platform Architecture](#architecture)
+- [10 Synchronized Security Modules](#modules)
+- [Unified Trust Score Engine (0–100)](#trust-score)
+- [Machine Learning Benchmark & Visual Proof](#benchmark)
+- [Chrome Browser Protection Extension](#extension)
+- [REST API Reference](#api)
+- [Getting Started & Local Setup](#getting-started)
+- [Deploy to Render (Cloud)](#deploy-render)
+- [Security & Zero-Trust Principles](#security)
+- [License](#license)
 
 ---
 
+<span id="overview"></span>
 ## 🛡️ Executive Overview
 
 Modern web threats have evolved past simple suspicious domain names. Attackers deploy **homoglyphs**, **lookalike typosquatting**, **ephemeral domain lifespans**, **Certificate Authority trust loopholes**, and **weaponized QR codes** that evade conventional binary URL filters.
@@ -60,6 +51,7 @@ Modern web threats have evolved past simple suspicious domain names. Attackers d
 
 ---
 
+<span id="architecture"></span>
 ## 🏗️ Architecture
 
 ```
@@ -81,6 +73,7 @@ Modern web threats have evolved past simple suspicious domain names. Attackers d
 
 ---
 
+<span id="modules"></span>
 ## 🔬 10 Synchronized Security Modules
 
 | Module | Engine | Detection Capabilities |
@@ -98,6 +91,7 @@ Modern web threats have evolved past simple suspicious domain names. Attackers d
 
 ---
 
+<span id="trust-score"></span>
 ## 🎯 Unified Trust Score Engine (0–100)
 
 The Trust Score Engine evaluates findings from all modules to produce a composite score from **0 (Severe Threat)** to **100 (Verified Safe)**:
@@ -113,7 +107,8 @@ $$\text{Trust Score} = \max\left(0, \min\left(100, 100 - \sum \text{Penalties} +
 
 ---
 
-## 📊 Model Evaluation & Proof
+<span id="benchmark"></span>
+## 📊 Machine Learning Benchmark & Visual Proof
 
 The baseline phishing classification model was trained and evaluated using **5-fold stratified cross-validation** across **36 engineered URL features**:
 
@@ -137,7 +132,8 @@ The baseline phishing classification model was trained and evaluated using **5-f
 
 ---
 
-## 🌐 Chrome Browser Extension
+<span id="extension"></span>
+## 🌐 Chrome Browser Protection Extension
 
 TRUSTX AI includes a high-performance **Chrome Manifest V3** extension providing real-time in-browser threat defense.
 
@@ -164,6 +160,7 @@ Any user can install TRUSTX AI in Google Chrome without compiling code:
 
 ---
 
+<span id="api"></span>
 ## 📡 REST API Reference
 
 The FastAPI backend exposes interactive OpenAPI Swagger documentation at `http://localhost:8000/docs`.
@@ -183,7 +180,8 @@ The FastAPI backend exposes interactive OpenAPI Swagger documentation at `http:/
 
 ---
 
-## 🚀 Getting Started
+<span id="getting-started"></span>
+## 🚀 Getting Started & Local Setup
 
 ### Prerequisites
 - **Python 3.11+**
@@ -223,6 +221,27 @@ npm run dev
 
 ---
 
+<span id="deploy-render"></span>
+## ☁️ Deploy to Render (Cloud)
+
+TRUSTX AI is pre-configured with a complete Render Blueprint specification (`render.yaml`).
+
+<p align="left">
+  <a href="https://render.com/deploy?repo=https://github.com/officialjisanhalder-art/TRUSTX-AI">
+    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
+  </a>
+</p>
+
+### Deployment Steps:
+1. Click the **Deploy to Render** button above (or create a Blueprint in your [Render Dashboard](https://dashboard.render.com/) pointing to this repository).
+2. Render automatically builds both services:
+   - **`trustx-api`** (FastAPI Web Service running Python 3.11.9)
+   - **`trustx-frontend`** (React Vite Static Site)
+3. Set `VITE_API_URL` on the frontend static site to your live backend service URL.
+
+---
+
+<span id="security"></span>
 ## 🔒 Security & Zero-Trust Principles
 
 - **No Third-Party Credentials Required:** All threat queries use open protocols (ICANN RDAP, Sectigo crt.sh, abuse.ch URLhaus). No paid API keys or subscriptions are required.
@@ -232,6 +251,7 @@ npm run dev
 
 ---
 
+<span id="license"></span>
 ## 📜 License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
