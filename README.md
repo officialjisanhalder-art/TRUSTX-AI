@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/trustx_logo.png" width="160" alt="TRUSTX AI Logo">
+  <img src="docs/trustx_logo.png" width="180" alt="TRUSTX AI Logo">
 </p>
 
 # <p align="center">TRUSTX AI</p>
@@ -9,13 +9,17 @@
 </p>
 
 <p align="center">
-  <a href="https://trustx-frontend-uiij.onrender.com/"><img src="https://img.shields.io/badge/Live_Demo-Online-00c853?style=flat-square&logo=render&logoColor=white" alt="Live Demo"></a>
-  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI">
-  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black" alt="React">
-  <img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=flat-square" alt="Accuracy">
-  <img src="https://img.shields.io/badge/Chrome_MV3-Protected-2563eb?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome">
-  <img src="https://img.shields.io/badge/License-MIT-slate?style=flat-square" alt="License">
+  <a href="https://trustx-frontend-uiij.onrender.com/"><img src="https://img.shields.io/badge/Live_Demo-Online-00c853?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo"></a>
+  <a href="#benchmark"><img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=for-the-badge" alt="Accuracy"></a>
+  <a href="#extension"><img src="https://img.shields.io/badge/Chrome_MV3-Zero--Click_Guard-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension"></a>
+  <a href="#license"><img src="https://img.shields.io/badge/License-MIT-slate?style=for-the-badge" alt="License"></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
+  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
 </p>
 
 ---
@@ -226,15 +230,10 @@ npm run dev
 
 TRUSTX AI is pre-configured with a complete Render Blueprint specification (`render.yaml`).
 
-<p align="left">
-  <a href="https://render.com/deploy?repo=https://github.com/officialjisanhalder-art/TRUSTX-AI">
-    <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
-  </a>
-</p>
-
 ### Deployment Steps:
-1. Click the **Deploy to Render** button above (or create a Blueprint in your [Render Dashboard](https://dashboard.render.com/) pointing to this repository).
-2. Render automatically builds both services:
+1. In your [Render Dashboard](https://dashboard.render.com/), click **New +** → **Blueprint**.
+2. Connect this repository (`officialjisanhalder-art/TRUSTX-AI`).
+3. Render automatically builds both services:
    - **`trustx-api`** (FastAPI Web Service running Python 3.11.9)
    - **`trustx-frontend`** (React Vite Static Site)
 3. Set `VITE_API_URL` on the frontend static site to your live backend service URL.
