@@ -137,7 +137,18 @@ The baseline phishing classification model was trained and evaluated using **5-f
 
 ## 🌐 Chrome Browser Extension
 
-TRUSTX AI includes a high-performance **Chrome Manifest V3** extension located in the `extension/` directory.
+TRUSTX AI includes a high-performance **Chrome Manifest V3** extension providing real-time in-browser threat defense.
+
+### 📥 Download & Install in 30 Seconds:
+Any user can install TRUSTX AI in Google Chrome without compiling code:
+
+1. **Download:** Click 👉 [**Download trustx-extension.zip**](https://github.com/officialjisanhalder-art/TRUSTX-AI/raw/main/trustx-extension.zip) *(or click the "Extension" button in the web dashboard)*.
+2. **Unzip:** Extract the downloaded `.zip` file on your computer.
+3. **Load into Chrome:**
+   - Open Google Chrome and go to `chrome://extensions/`
+   - Enable the **Developer mode** toggle in the top-right corner.
+   - Click **Load unpacked** and select the unzipped folder.
+   - *Done! The TRUSTX AI shield will now protect your browser in real time.*
 
 ### Key Capabilities:
 1. **Interactive Link Hover Threat Preview:**

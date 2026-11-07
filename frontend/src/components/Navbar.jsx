@@ -54,6 +54,31 @@ export default function Navbar() {
           ))}
         </div>
 
+        {/* Chrome Extension Download */}
+        <a
+          href="/trustx-extension.zip"
+          download="trustx-extension.zip"
+          className="nav-extension-btn"
+          title="Download Chrome Extension (ZIP)"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 12px',
+            background: '#111726',
+            border: '1px solid #1e293b',
+            borderRadius: '6px',
+            color: '#38bdf8',
+            fontSize: '12px',
+            fontWeight: '600',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+            marginLeft: '8px'
+          }}
+        >
+          <span>🧩 Extension (.zip)</span>
+        </a>
+
         {/* API Status Indicator */}
         <div className="nav-status">
           <div className="status-indicator" title="TRUSTX Core Engine Online">

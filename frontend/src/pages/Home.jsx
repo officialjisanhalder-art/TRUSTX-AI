@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Shield, Search, Brain, Globe2, BarChart3, Lock, Zap, Globe, QrCode, Share2, Radio, Server, CheckCircle2 } from 'lucide-react'
+import { Shield, Search, Brain, Globe2, BarChart3, Lock, Zap, Globe, QrCode, Share2, Radio, Server, CheckCircle2, Download } from 'lucide-react'
 import './Home.css'
 
 const features = [
@@ -105,6 +105,16 @@ export default function Home() {
               <Share2 size={18} />
               Threat Graph
             </Link>
+            <a
+              href="/trustx-extension.zip"
+              download="trustx-extension.zip"
+              className="btn btn-outline btn-lg"
+              style={{ borderColor: '#2563eb', color: '#93c5fd' }}
+              title="Download Chrome Extension (.zip)"
+            >
+              <Download size={18} />
+              Chrome Extension (.zip)
+            </a>
           </motion.div>
 
           {/* Stats */}
