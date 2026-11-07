@@ -244,7 +244,6 @@ TRUSTX AI is pre-configured with a complete Render Blueprint specification (`ren
 ## 🔒 Security & Zero-Trust Principles
 
 - **No Third-Party Credentials Required:** All threat queries use open protocols (ICANN RDAP, Sectigo crt.sh, abuse.ch URLhaus). No paid API keys or subscriptions are required.
-- **Environment & Secret Protection:** No `.env` files or credentials are ever tracked or committed. All configurations use secure, local defaults.
 - **Privacy by Design:** URLs and telemetry are audited locally on your machine—no browsing activity is forwarded to third-party LLM providers.
 - **Explainable Ground Truth:** The platform adheres strictly to evidence-based reporting. If a service is unreachable or a domain is unresolvable, the system clearly states the limitation rather than inventing findings.
 
