@@ -55,6 +55,28 @@ export default function Home() {
       {/* Hero Section */}
       <section className="hero">
         <div className="container hero-content">
+          {/* Official 3D Cyber Emblem */}
+          <motion.div
+            className="hero-logo-wrap"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            style={{ marginBottom: '24px', display: 'flex', justifyContent: 'center' }}
+          >
+            <img
+              src="/trustx_logo.png"
+              alt="TRUSTX AI Shield"
+              style={{
+                width: '130px',
+                height: '130px',
+                borderRadius: '24px',
+                border: '2px solid #1e293b',
+                boxShadow: '0 20px 40px rgba(0, 0, 0, 0.6)',
+                objectFit: 'cover'
+              }}
+            />
+          </motion.div>
+
           <motion.div
             className="hero-badge"
             initial={{ opacity: 0, scale: 0.8 }}

@@ -33,7 +33,7 @@ export default function Navbar() {
       <div className="navbar-inner container">
         {/* Logo */}
         <Link to="/" className="nav-logo">
-          <div className="nav-logo-icon">🛡️</div>
+          <img src="/favicon.svg" alt="TRUSTX AI Logo" className="nav-logo-img" width="30" height="30" />
           <div className="nav-logo-text">
             <span className="nav-brand">TRUSTX</span>
             <span className="nav-brand-ai">AI</span>
