@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/trustx_logo.jpg" width="480" alt="TRUSTX AI Logo" style="border-radius: 14px;">
+  <img src="docs/trustx_logo.png" width="360" alt="TRUSTX AI Logo">
 </p>
 
 <p align="center">
