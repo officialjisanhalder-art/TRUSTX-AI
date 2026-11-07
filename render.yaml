@@ -6,7 +6,7 @@ services:
   # 1. FastAPI Backend API Service
   - type: web
     name: trustx-api
-    env: python
+    runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
@@ -16,10 +16,11 @@ services:
         value: 3.11.9
 
   # 2. React Vite Frontend Static Site
-  - type: static
+  - type: web
     name: trustx-frontend
+    runtime: static
     buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    staticPublishPath: ./frontend/dist
     routes:
       - type: rewrite
         source: /*
