@@ -12,3 +12,7 @@ shap==0.44.0
 xgboost==2.0.3
 python-whois==0.8.0
 requests==2.31.0
+dnspython>=2.4.2
+Pillow>=10.0.0
+opencv-python-headless>=4.8.0.76
+wheel>=0.41.0
