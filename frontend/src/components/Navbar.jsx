@@ -32,10 +32,10 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-inner container">
         {/* Logo */}
-        <Link to="/" className="nav-logo">
-          <img src="/favicon.svg" alt="TRUSTX AI Logo" className="nav-logo-img" width="30" height="30" />
+        <Link to="/" className="nav-logo" title="TRUSTX AI Home">
+          <img src="/favicon.svg" alt="TRUSTX AI Logo" className="nav-logo-img" />
           <div className="nav-logo-text">
-            <span className="nav-brand">TRUSTX</span>
+            <span className="nav-brand">TRUST<span className="nav-brand-x">X</span></span>
             <span className="nav-brand-ai">AI</span>
           </div>
         </Link>
