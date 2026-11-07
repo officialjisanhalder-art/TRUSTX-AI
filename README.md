@@ -1,4 +1,6 @@
-# <p align="center"><img src="extension/icons/icon128.png" width="96" height="96" alt="TRUSTX AI Logo"><br>TRUSTX AI</p>
+<p align="center">
+  <img src="docs/trustx_logo.jpg" width="480" alt="TRUSTX AI Logo" style="border-radius: 14px;">
+</p>
 
 <p align="center">
   <strong>Intelligent Web Security & Collaborative Threat Intelligence Platform</strong>
