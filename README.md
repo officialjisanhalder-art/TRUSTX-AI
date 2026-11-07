@@ -202,8 +202,6 @@ cd backend
 python -m pip install -r ../requirements.txt
 python main.py
 ```
-*API will be available at:* `http://localhost:8000`  
-*Swagger Docs:* `http://localhost:8000/docs`
 
 ### 2. Launch Frontend Dashboard
 ```bash
@@ -215,7 +213,7 @@ cd frontend
 npm install
 npm run dev
 ```
-*Web Dashboard will be available at:* `http://localhost:5173`
+
 
 ### 3. Install Chrome Extension
 1. Open Google Chrome and navigate to `chrome://extensions/`.
