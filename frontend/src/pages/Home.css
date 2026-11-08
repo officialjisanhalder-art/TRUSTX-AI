@@ -167,7 +167,7 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 20px;
 }
 
@@ -204,4 +204,64 @@
   font-size: 13.5px;
   color: #94a3b8;
   line-height: 1.55;
+}
+
+/* ---- Responsive Adaptations ---- */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 60px 14px 40px;
+  }
+
+  .hero-title {
+    font-size: clamp(26px, 7vw, 42px);
+  }
+
+  .hero-desc {
+    font-size: 14.5px;
+    margin-bottom: 28px;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding-top: 24px;
+  }
+
+  .hero-stat-value {
+    font-size: 22px;
+  }
+
+  .features-section {
+    padding: 50px 14px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero-badge {
+    font-size: 10px;
+    padding: 5px 10px;
+    letter-spacing: 0.4px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 10px;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
 }

@@ -16,6 +16,13 @@ export default function Scanner() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
   const [toast, setToast] = useState(null)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 640)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -424,23 +431,23 @@ function ShapBarChart({ features }) {
       <p className="detail-subtitle">
         Absolute SHAP values — larger bars = stronger influence on the prediction.
       </p>
-      <ResponsiveContainer width="100%" height={320}>
+      <ResponsiveContainer width="100%" height={isMobile ? 280 : 320}>
         <BarChart
           data={chartData}
           layout="vertical"
-          margin={{ top: 4, right: 24, left: 8, bottom: 4 }}
+          margin={{ top: 4, right: isMobile ? 12 : 24, left: isMobile ? -10 : 8, bottom: 4 }}
         >
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" horizontal={false} />
           <XAxis
             type="number"
-            tick={{ fill: '#9ca3af', fontSize: 11 }}
+            tick={{ fill: '#9ca3af', fontSize: 10 }}
             tickFormatter={(v) => v.toFixed(2)}
           />
           <YAxis
             dataKey="name"
             type="category"
-            width={200}
-            tick={{ fill: '#c4c9d9', fontSize: 11 }}
+            width={isMobile ? 115 : 200}
+            tick={{ fill: '#c4c9d9', fontSize: isMobile ? 10 : 11 }}
           />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={14}>

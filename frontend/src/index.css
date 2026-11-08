@@ -107,12 +107,24 @@ a:hover {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 20px;
+  width: 100%;
 }
 
 .page-wrapper {
   padding-top: 90px;
   padding-bottom: 60px;
   min-height: 100vh;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  .page-wrapper {
+    padding-top: 74px;
+    padding-bottom: 40px;
+  }
 }
 
 /* ---- Restrained Transitions ---- */

@@ -223,6 +223,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .btn-deep-inspect {
@@ -294,6 +296,33 @@
 }
 
 @media (max-width: 900px) {
-  .intel-kpis { grid-template-columns: 1fr; }
-  .community-grid { grid-template-columns: 1fr; }
+  .intel-kpis { grid-template-columns: 1fr; gap: 14px; }
+  .community-grid { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 600px) {
+  .community-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .kpi-box {
+    padding: 16px;
+  }
+
+  .kpi-num {
+    font-size: 1.8rem;
+  }
+
+  .report-submission-card, .threat-feed-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .community-toast {
+    right: 14px;
+    left: 14px;
+    top: 14px;
+    text-align: center;
+  }
 }

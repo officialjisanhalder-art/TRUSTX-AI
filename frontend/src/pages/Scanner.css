@@ -462,6 +462,7 @@
   .result-card-left {
     min-width: auto;
     padding: 24px;
+    width: 100%;
   }
 
   .result-details-grid {
@@ -470,6 +471,67 @@
 
   .result-actions {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 22px;
+  }
+
+  .scanner-input-group {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    border-radius: var(--radius-md);
+  }
+
+  .scanner-input {
+    width: 100%;
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+
+  .scanner-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .quick-urls {
+    gap: 6px;
+  }
+
+  .result-card-right {
+    padding: 16px;
+  }
+
+  .result-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .detail-card {
+    padding: 16px;
+  }
+
+  .shap-feature {
+    padding: 8px 10px;
+  }
+
+  .shap-name {
+    font-size: 11px;
+    max-width: 130px;
+  }
+
+  .scanner-toast {
+    right: 14px;
+    left: 14px;
+    bottom: 14px;
+    max-width: none;
+    min-width: auto;
   }
 }
 

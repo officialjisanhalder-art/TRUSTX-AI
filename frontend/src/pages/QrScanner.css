@@ -294,5 +294,40 @@
 @media (max-width: 850px) {
   .qr-workspace-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .qr-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .qr-upload-card, .qr-results-card {
+    padding: 16px;
+    min-height: auto;
+    border-radius: 14px;
+  }
+
+  .dropzone {
+    padding: 16px;
+  }
+
+  .upload-icon-circle {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .snap-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .scan-qr-btn {
+    padding: 12px;
+    font-size: 0.9rem;
   }
 }

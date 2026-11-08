@@ -112,6 +112,35 @@
   border: 1px solid #1e293b;
 }
 
+/* Desktop Actions Group */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-extension-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #111726;
+  border: 1px solid #1e293b;
+  border-radius: 6px;
+  color: #38bdf8;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.nav-extension-btn:hover {
+  background: #161e31;
+  border-color: #38bdf8;
+  color: #7dd3fc;
+}
+
 /* Status Indicator */
 .nav-status {
   flex-shrink: 0;
@@ -127,11 +156,30 @@
   border-radius: 6px;
 }
 
+.status-indicator.compact {
+  padding: 7px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #22c55e;
+}
+
+.status-dot.pulse {
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
 .status-label {
@@ -142,37 +190,148 @@
   letter-spacing: 0.5px;
 }
 
-/* Mobile Toggle */
-.mobile-toggle {
+/* Mobile Controls */
+.mobile-right {
   display: none;
-  background: transparent;
-  border: 1px solid #1e293b;
-  color: #94a3b8;
-  padding: 6px;
-  border-radius: 6px;
-  cursor: pointer;
+  align-items: center;
+  gap: 10px;
 }
 
+.mobile-toggle {
+  background: #111726;
+  border: 1px solid #1e293b;
+  color: #f8fafc;
+  padding: 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.mobile-toggle:hover {
+  background: #1a2236;
+  border-color: #38bdf8;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #080c14;
+  border-bottom: 1px solid #1e293b;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+  max-height: calc(100vh - 65px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mobile-drawer.open {
+  display: block;
+}
+
+.mobile-drawer-inner {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.15s ease;
+  min-height: 44px;
+}
+
+.mobile-nav-link:hover, .mobile-nav-link:active {
+  color: #f8fafc;
+  background: #131929;
+}
+
+.mobile-nav-link.active {
+  color: #38bdf8;
+  background: #111726;
+  border: 1px solid #1e293b;
+}
+
+.mobile-drawer-footer {
+  border-top: 1px solid #1e293b;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-extension-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: #111726;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  color: #38bdf8;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  min-height: 44px;
+}
+
+.mobile-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+  padding: 4px;
+}
+
+.mobile-status-text {
+  font-weight: 600;
+}
+
+.mobile-backdrop {
+  position: fixed;
+  inset: 0;
+  top: 62px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Breakpoint for Navigation */
 @media (max-width: 960px) {
-  .mobile-toggle {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-right {
     display: flex;
-  }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #080c14;
-    border-bottom: 1px solid #1e293b;
-    flex-direction: column;
-    padding: 16px;
-    gap: 8px;
-  }
-  .nav-links.open {
-    display: flex;
-  }
-  .nav-link {
-    width: 100%;
   }
 }

@@ -440,8 +440,59 @@
 @media (max-width: 900px) {
   .report-hero-card {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
   .ai-verdict-grid, .score-breakdown-grid, .dns-grid, .ssl-grid, .headers-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .report-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .report-hero-card {
+    padding: 18px;
+  }
+
+  .report-domain {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+  }
+
+  .hero-summary-box {
+    padding: 14px;
+  }
+
+  .cyber-card {
+    padding: 16px;
+  }
+
+  .intel-tab-btn {
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .intel-tab-body {
+    padding: 16px 12px;
+  }
+
+  .dns-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .dns-row .val {
+    word-break: break-all;
+  }
+
+  .penalty-row, .bonus-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 }
