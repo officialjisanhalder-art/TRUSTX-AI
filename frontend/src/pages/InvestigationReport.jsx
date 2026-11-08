@@ -16,7 +16,7 @@ export default function InvestigationReport() {
   const navigate = useNavigate()
 
   const [report, setReport] = useState(location.state?.report || null)
-  const [loading, setLoading] = useState(!report)
+  const [loading, setLoading] = useState(!report && Boolean(id))
   const [error, setError] = useState(null)
   const [activeTab, setActiveTab] = useState('overview')
 
@@ -32,6 +32,8 @@ export default function InvestigationReport() {
           setError(err.message || 'Report not found.')
           setLoading(false)
         })
+    } else if (!report && !id) {
+      setLoading(false)
     }
   }, [id, report])
 

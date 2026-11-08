@@ -369,7 +369,7 @@ export default function Scanner() {
 
               {/* SHAP Bar Chart — Full Width */}
               {result.shap_explanation?.top_features?.length > 0 && (
-                <ShapBarChart features={result.shap_explanation.top_features} />
+                <ShapBarChart features={result.shap_explanation.top_features} isMobile={isMobile} />
               )}
 
               {/* Report */}
@@ -392,7 +392,8 @@ export default function Scanner() {
 }
 
 /* ---- SHAP Bar Chart Component ---- */
-function ShapBarChart({ features }) {
+function ShapBarChart({ features, isMobile: propIsMobile }) {
+  const isMobile = Boolean(propIsMobile ?? (typeof window !== 'undefined' && window.innerWidth < 640))
   // Take top 10 features and format for recharts
   const chartData = features.slice(0, 10).map((feat) => ({
     name: (feat.description || feat.feature?.replace(/_/g, ' ') || 'Unknown').slice(0, 28),
@@ -488,11 +489,11 @@ function ResultCard({ result, riskConfig }) {
         <div className="result-meta-grid">
           <div className="result-meta">
             <span className="meta-label">Prediction</span>
-            <span className={`meta-value ${result.prediction}`}>{result.prediction.toUpperCase()}</span>
+            <span className={`meta-value ${result.prediction || ''}`}>{(result.prediction || 'UNKNOWN').toUpperCase()}</span>
           </div>
           <div className="result-meta">
             <span className="meta-label">Risk Level</span>
-            <span className="meta-value">{result.risk_level.toUpperCase()}</span>
+            <span className="meta-value">{(result.risk_level || 'UNKNOWN').toUpperCase()}</span>
           </div>
           <div className="result-meta">
             <span className="meta-label">Source</span>
