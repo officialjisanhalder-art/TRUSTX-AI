@@ -321,6 +321,7 @@ const OFFICIAL_TRUSTED_DOMAINS = [
   'trustx-api.onrender.com',
   'onrender.com',
   'render.com',
+  'vercel.app',
   'trustx.ai',
   'localhost',
   '127.0.0.1'

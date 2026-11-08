@@ -77,7 +77,7 @@ def investigate_url(url: str, client_ip: str = "127.0.0.1") -> Dict[str, Any]:
     is_blacklisted = False
 
     OFFICIAL_TRUSTED_DOMAINS = {
-        'trustx.ai', 'onrender.com', 'render.com',
+        'trustx.ai', 'onrender.com', 'render.com', 'vercel.app',
         'trustx-frontend-uiij.onrender.com', 'trustx-api.onrender.com',
         'localhost', '127.0.0.1', 'github.com', 'google.com',
         'microsoft.com', 'apple.com'

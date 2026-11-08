@@ -134,7 +134,7 @@ def init_db():
         'apple.com', 'github.com', 'stackoverflow.com', 'wikipedia.org',
         'linkedin.com', 'twitter.com', 'youtube.com', 'reddit.com',
         'netflix.com', 'spotify.com', 'dropbox.com', 'zoom.us',
-        'trustx.ai', 'onrender.com', 'render.com',
+        'trustx.ai', 'onrender.com', 'render.com', 'vercel.app',
         'trustx-frontend-uiij.onrender.com', 'trustx-api.onrender.com',
         'localhost', '127.0.0.1',
     ]
@@ -970,6 +970,7 @@ OFFICIAL_TRUSTED_DOMAINS = {
     'trustx.ai',
     'onrender.com',
     'render.com',
+    'vercel.app',
     'trustx-frontend-uiij.onrender.com',
     'trustx-api.onrender.com',
     'localhost',

@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'trustx-api.onrender.com',
     'onrender.com',
     'render.com',
+    'vercel.app',
     'trustx.ai',
     'localhost',
     '127.0.0.1'
