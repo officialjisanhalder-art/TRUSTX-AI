@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://trustx-web.vercel.app/"><img src="https://img.shields.io/badge/Vercel_Edge-Live_Production-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Edge Live"></a>
   <a href="https://trustx-frontend-uiij.onrender.com/"><img src="https://img.shields.io/badge/Live_Demo-Online-00c853?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo"></a>
   <a href="#benchmark"><img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=for-the-badge" alt="Accuracy"></a>
   <a href="#extension"><img src="https://img.shields.io/badge/Chrome_MV3-Zero--Click_Guard-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension"></a>
@@ -226,7 +227,9 @@ npm run dev
 <span id="deploy-render"></span>
 ## ☁️ Deploy to Render (Cloud)
 
-TRUSTX AI is pre-configured with a complete Render Blueprint specification (`render.yaml`).
+- **Frontend (Vercel Global Edge CDN):** [https://trustx-web.vercel.app](https://trustx-web.vercel.app) (Zero cold starts, instant loading)
+- **Backend API (Render Cloud):** [https://trustx-api.onrender.com](https://trustx-api.onrender.com)
+- **Render Blueprint:** Pre-configured with complete blueprint specification (`render.yaml`).
 
 
 ---
