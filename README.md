@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="https://trustx-web.vercel.app/"><img src="https://img.shields.io/badge/Vercel_Edge-Live_Production-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Edge Live"></a>
-  <a href="https://trustx-frontend-uiij.onrender.com/"><img src="https://img.shields.io/badge/Live_Demo-Online-00c853?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo"></a>
+  <a href="https://trustx-web.vercel.app/"><img src="https://img.shields.io/badge/Live_Demo-Vercel_Edge-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Edge Live"></a>
+  <a href="https://trustx-api.onrender.com/docs"><img src="https://img.shields.io/badge/Live_API-FastAPI_Swagger-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="Live API Swagger"></a>
   <a href="#benchmark"><img src="https://img.shields.io/badge/Accuracy-99.7%25_F1-16a34a?style=for-the-badge" alt="Accuracy"></a>
   <a href="#extension"><img src="https://img.shields.io/badge/Chrome_MV3-Zero--Click_Guard-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Chrome Extension"></a>
   <a href="#license"><img src="https://img.shields.io/badge/License-MIT-slate?style=for-the-badge" alt="License"></a>
@@ -21,7 +21,16 @@
   <img src="https://img.shields.io/badge/FastAPI-0.104+-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI">
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React">
   <img src="https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
+  <img src="https://img.shields.io/badge/Edge_CDN-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel">
 </p>
+
+---
+
+> ### 🚀 Quick Access Links
+> - **Live Web Platform (Vercel Edge):** [https://trustx-web.vercel.app](https://trustx-web.vercel.app) *(Instant zero cold-start delivery)*
+> - **Interactive REST API Docs (Swagger):** [https://trustx-api.onrender.com/docs](https://trustx-api.onrender.com/docs)
+> - **Chrome Browser Extension:** [Download `trustx-extension.zip`](https://github.com/officialjisanhalder-art/TRUSTX-AI/raw/main/trustx-extension.zip)
+> - **Secondary Demo Mirror (Render):** [https://trustx-frontend-uiij.onrender.com](https://trustx-frontend-uiij.onrender.com)
 
 ---
 
@@ -35,7 +44,7 @@
 - [Chrome Browser Protection Extension](#extension)
 - [REST API Reference](#api)
 - [Getting Started & Local Setup](#getting-started)
-- [Deploy to Render (Cloud)](#deploy-render)
+- [Cloud Deployment (Vercel + Render)](#cloud-deployment)
 - [Security & Zero-Trust Principles](#security)
 - [License](#license)
 
@@ -53,6 +62,7 @@ Modern web threats have evolved past simple suspicious domain names. Attackers d
 - **Sub-15ms Local Inference:** Operates locally on your host with zero external cloud LLM dependencies, ensuring maximum privacy and instant real-time defense.
 - **Zero-Click Browser Guard:** Real-time Chrome Extension actively intercepts clicks on deceptive links, displaying an in-DOM warning modal before the browser navigates to the malicious destination.
 - **Infrastructure Threat Graph:** Interactive SVG visualizer mapping correlated domains that share hosting IPs, nameservers, MX exchanges, or rogue certificate authorities.
+- **High-Performance Global CDN Delivery:** Decoupled presentation architecture deployed to **Vercel Edge CDN** for instantaneous UI interaction and zero cold starts, backed by an autonomous **FastAPI + ML engine on Render**.
 
 ---
 
@@ -64,15 +74,16 @@ Modern web threats have evolved past simple suspicious domain names. Attackers d
 │                                TRUSTX AI ECOSYSTEM                                     │
 ├─────────────────────┬──────────────────────┬─────────────────────┬─────────────────────┤
 │  Client Tier        │  Presentation Tier   │  API Orchestrator   │  Intelligence Core  │
+│  (Chrome MV3 Guard) │  (Vercel Edge CDN)   │  (Render Cloud)     │  (In-Memory / OSINT)│
 ├─────────────────────┼──────────────────────┼─────────────────────┼─────────────────────┤
 │                     │                      │                     │                     │
-│  Chrome MV3 Guard   │  React 19 Dashboard  │  FastAPI (Port 8000)│  Logistic Regression│
-│  • Link Hover Pill  │  • Deep Investigation│  • /investigate     │  • 36 URL Features  │
-│  • Zero-Click Modal │  • QR Studio         │  • /qr/scan         │  • SHAP Explainer   │
-│  • Real-Time Cache  │  • Threat Graph      │  • /threat-intel    │  • RDAP & dnspython │
-│  • Deep Links       │  • Community Reports │  • /community/vote  │  • TLS & crt.sh CT  │
-│  • Local Settings   │  • Model Proofs      │  • /predict         │  • URLhaus abuse.ch │
-│                     │                      │                     │  • Trust Engine     │
+│  • Link Hover Pill  │  React 19 SPA        │  FastAPI (Port 8000)│  Logistic Regression│
+│  • Zero-Click Modal │  • Deep Investigation│  • /investigate     │  • 36 URL Features  │
+│  • Real-Time Cache  │  • QR Studio         │  • /qr/scan         │  • SHAP Explainer   │
+│  • Deep Links       │  • Threat Graph      │  • /threat-intel    │  • RDAP & dnspython │
+│  • Local Settings   │  • Community Reports │  • /community/vote  │  • TLS & crt.sh CT  │
+│                     │  • Model Proofs      │  • /predict         │  • URLhaus abuse.ch │
+│                     │  • Global Edge Cache │  • Rate Limiter     │  • Trust Engine     │
 └─────────────────────┴──────────────────────┴─────────────────────┴─────────────────────┘
 ```
 
@@ -168,7 +179,9 @@ Any user can install TRUSTX AI in Google Chrome without compiling code:
 <span id="api"></span>
 ## 📡 REST API Reference
 
-The FastAPI backend exposes interactive OpenAPI Swagger documentation at `http://localhost:8000/docs`.
+The FastAPI backend exposes interactive OpenAPI Swagger documentation at:
+- **Cloud Production:** [https://trustx-api.onrender.com/docs](https://trustx-api.onrender.com/docs)
+- **Local Development:** `http://localhost:8000/docs`
 
 | Method | Endpoint | Description |
 | :---: | :--- | :--- |
@@ -215,7 +228,6 @@ npm install
 npm run dev
 ```
 
-
 ### 3. Install Chrome Extension
 1. Open Google Chrome and navigate to `chrome://extensions/`.
 2. Toggle on **Developer mode** in the top-right corner.
@@ -224,13 +236,51 @@ npm run dev
 
 ---
 
-<span id="deploy-render"></span>
-## ☁️ Deploy to Render (Cloud)
+<span id="cloud-deployment"></span>
+## ☁️ Cloud Deployment (Vercel + Render)
 
-- **Frontend (Vercel Global Edge CDN):** [https://trustx-web.vercel.app](https://trustx-web.vercel.app) (Zero cold starts, instant loading)
-- **Backend API (Render Cloud):** [https://trustx-api.onrender.com](https://trustx-api.onrender.com)
-- **Render Blueprint:** Pre-configured with complete blueprint specification (`render.yaml`).
+TRUSTX AI employs an optimized split-cloud production architecture designed for maximum performance, global availability, and cost efficiency:
 
+```
+┌─────────────────────────────────┐               ┌────────────────────────────────┐
+│      Vercel Global Edge CDN     │  REST / JSON  │       Render Cloud Server      │
+│  https://trustx-web.vercel.app  ├──────────────►│ https://trustx-api.onrender.com│
+│   • React 19 + Vite 8 SPA       │  CORS Enabled │   • FastAPI Python 3.11        │
+│   • Sub-50ms Global Asset Delivery│             │   • 36-Feature ML Inference    │
+│   • 0s Cold Starts              │               │   • SHAP & OSINT Intelligence  │
+└─────────────────────────────────┘               └────────────────────────────────┘
+```
+
+### 1. Frontend: Vercel Global Edge CDN
+- **Production URL:** [https://trustx-web.vercel.app](https://trustx-web.vercel.app)
+- **Backup Alias:** [https://frontend-delta-two-10.vercel.app](https://frontend-delta-two-10.vercel.app)
+- **Why Vercel?** Eliminates the 50-second free-tier spin-up delay of traditional container hosts. Static assets and SPA routes are cached across worldwide edge nodes with zero cold-starts.
+- **Routing Configuration:** Handled automatically via [`frontend/vercel.json`](frontend/vercel.json):
+  ```json
+  {
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "framework": "vite",
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/index.html" }
+    ]
+  }
+  ```
+- **Deployment via CLI:**
+  ```bash
+  cd frontend
+  npm install
+  npx vercel --prod
+  ```
+
+### 2. Backend API: Render Cloud
+- **Production API:** [https://trustx-api.onrender.com](https://trustx-api.onrender.com)
+- **Health Endpoint:** [https://trustx-api.onrender.com/health](https://trustx-api.onrender.com/health)
+- **Blueprint:** Fully managed via repository [`render.yaml`](render.yaml).
+
+### 3. Whitelist & CORS Security
+- The backend API (`backend/main.py`) allows origins and requests from `https://trustx-web.vercel.app`.
+- The domain `vercel.app` is pre-registered in the **Official Trusted Domain Registry** across all security engines and Chrome extension background workers, ensuring TRUSTX AI never triggers false-positive warnings against its own production infrastructure.
 
 ---
 
